@@ -6,7 +6,8 @@ import java.util.Properties;
 
 public class Operations {
     public static final String PATH_TO_PROPERTIES = "src/course.properties";
-    private static double getDollar(){
+
+    private static double getDollar() {
         FileInputStream fileInputStream;
         Properties prop = new Properties();
         try {
@@ -16,10 +17,11 @@ public class Operations {
             throw new RuntimeException(e);
         }
         String dollarString = prop.getProperty("dollar");
-        double dollar=Double.parseDouble(dollarString);
-       return dollar;
+        double dollar = Double.parseDouble(dollarString);
+        return dollar;
     }
-    public static double getRuble(){
+
+    private static double getRuble() {
         FileInputStream fileInputStream;
         Properties prop = new Properties();
         try {
@@ -29,14 +31,32 @@ public class Operations {
             throw new RuntimeException(e);
         }
         String rubleString = prop.getProperty("ruble");
-        double ruble=Double.parseDouble(rubleString);
+        double ruble = Double.parseDouble(rubleString);
         return ruble;
     }
-   public static double toDollars(double a){
-        return a*getDollar();
+
+    public static double toRubles(String value) {
+
+//        String[] dollarsString = value.split("\\$");
+        String dollarsString=value.substring(1);
+        double dollars = Double.parseDouble(dollarsString);
+        double result = dollars * getDollar();
+
+        return result;
+
     }
-    public static double toRubles(double a){
-        return a*getRuble();
+
+    public static double toDollars(String value) {
+
+        String rublesString = value.substring(0, value.length() - 1);
+        double rubles = Double.parseDouble(rublesString);
+        double result = rubles * getRuble();
+
+        return result;
+
     }
+
+
+
 
 }
