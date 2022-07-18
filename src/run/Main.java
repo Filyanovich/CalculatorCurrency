@@ -1,22 +1,23 @@
 package run;
 
-import calculate.Operations;
+import calculate.Converter;
+import calculate.ReadConsole;
+import calculate.Transfer;
 
-import java.util.Arrays;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+//        Scanner in = new Scanner(System.in);
+        System.out.println("Exchange rate: "+"1$= "+ Transfer.getDollar()+"p");
+        System.out.println("Exchange rate: "+"1p= $"+Transfer.getRuble());
+        System.out.println(Transfer.getDollarToRuble("$1"));
+        System.out.println(Transfer.getRubleToDollar("1000p"));
+//        System.out.print("Please, input string: ");
+//        Converter.readLine(in.nextLine());
 
-        String dollar="$10";
-        String rub="1000p";
 
-        System.out.println(rub+" is: "+ Operations.toDollars(rub)+"$");
-        System.out.println(dollar+" is: "+ Operations.toRubles(dollar)+"p");
-//        System.out.println(Operations.toDollars("737р" + Operations.toRubles("$85.4")));
-
-
-//        String[] dollars= value.split("\\$");
-//        System.out.println(rubles);
     }
 }

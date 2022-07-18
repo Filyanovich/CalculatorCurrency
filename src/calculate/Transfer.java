@@ -4,10 +4,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Operations {
+public class Transfer {
     public static final String PATH_TO_PROPERTIES = "src/course.properties";
 
-    private static double getDollar() {
+    public static double getDollar() {
         FileInputStream fileInputStream;
         Properties prop = new Properties();
         try {
@@ -21,7 +21,7 @@ public class Operations {
         return dollar;
     }
 
-    private static double getRuble() {
+    public static double getRuble() {
         FileInputStream fileInputStream;
         Properties prop = new Properties();
         try {
@@ -35,9 +35,8 @@ public class Operations {
         return ruble;
     }
 
-    public static double toRubles(String value) {
+    public static double getDollarToRuble(String value) {
 
-//        String[] dollarsString = value.split("\\$");
         String dollarsString=value.substring(1);
         double dollars = Double.parseDouble(dollarsString);
         double result = dollars * getDollar();
@@ -46,7 +45,7 @@ public class Operations {
 
     }
 
-    public static double toDollars(String value) {
+    public static double getRubleToDollar(String value) {
 
         String rublesString = value.substring(0, value.length() - 1);
         double rubles = Double.parseDouble(rublesString);
@@ -55,8 +54,5 @@ public class Operations {
         return result;
 
     }
-
-
-
 
 }
